@@ -4,38 +4,41 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\JWT\SignatureInvalidException;
 use Firebase\JWT\JWT\UnexpectedValueException;
 use Firebase\JWT\JWT\DomainException;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Crypt;
-use App\User;
+use App\Models\User;
+use App\Models\Administrativos;
 class JwtAuth{
 
-    private $secret         = "nexos";
+    private $secret         =  "nexos";
     private $algoritmoCod   =  "HS256";
 
     public function  login($user,$pass){
         $usuario = User::where(array(
-            'email'   => $user,
-            'password'=> hash("SHA256",$pass),
+            'usuario'   => $user,
+            'password'  => hash("SHA256",$pass),
         ))->first();
 
         if(is_object($usuario)){
+
             if($usuario->estado=='1'){
+                if($usuario->rol_id==1){
+                    $usuario_2 = Administrativos::where('id_usuario',$usuario->id)->first();
+                }
+
                 $payload = array(
                     'sub'    => $usuario->id,
-                    'nombre' => $usuario->name,
-                    'usr'    => $usuario->email,
+                    'nombre' => $usuario->usuario,
+                    'usr'    => $usuario->usuario,
                     'iat'    => time(),
                     'exp'    => time() + (60 * 60 * 2)
                 );
                 $jwt = JWT::encode($payload,$this->secret,$this->algoritmoCod);
                 $response = array(
-                    'success' => true,
-                    'token'   => $jwt,
-                    'id_user' => $usuario->id,
-                    'rol'     => $usuario->rol,
-                    'nombre'  => $usuario->name,
-                    'telefono'=> $usuario->telefono,
-                    'email'   => $usuario->email
+                    'success'  => true,
+                    'token'    => $jwt,
+                    'id_user'  => $usuario->id,
+                    'rol'      => $usuario->rol_id,
+                    'nombre'   => $usuario_2->nombre,
+                    'apellidos'=> $usuario_2->apellidos
                 );
             } else {
                 $response = array(

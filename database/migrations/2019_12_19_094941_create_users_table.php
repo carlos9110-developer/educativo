@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('usuario',100)->unique();
             $table->string('password');
             $table->foreign('rol_id')->references('id')->on('roles')->onDelete('restrict')->onUpdate('restrict');// es para que no puedan eliminar datos de rol que esten aca
-            $table->unsignedInteger('rol_id');// es un entero sin signo osea siempre debe ser positivo
+            $table->unsignedInteger('rol_id');//
             $table->char('estado','1')->default('1');
             $table->charset   = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';

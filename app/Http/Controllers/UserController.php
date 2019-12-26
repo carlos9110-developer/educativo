@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function login(Request $request)
     {
-        $email=$request->email;
+        $email=$request->usuario;
         $password=$request->password;
         if(!is_null($email) && !is_null($password) )
         {
