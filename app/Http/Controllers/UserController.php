@@ -13,6 +13,12 @@ use Illuminate\Http\JsonResponse;
   */
 class UserController extends Controller
 {
+    public function verificarToken(Request $request)
+    {
+        $response = array('success' => true);
+        return new JsonResponse($response);
+    }
+
     public function login(Request $request)
     {
         $email=$request->usuario;

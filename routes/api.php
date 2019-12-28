@@ -13,6 +13,9 @@ Route::post('login','UserController@login');
 /* con esto se protejen todas las rutas de nuestra aplicación */
 Route::group(['middleware' => 'verificacionToken'], function()
 {
+    /** CONTROLADOR USERS */
+    Route::get('VerificarToken','UserController@verificarToken');
+
     Route::post('registroCliente','ControllerClientes@registrarCliente');
     Route::get('infoCliente','ControllerClientes@informacionCliente');
     Route::put('actualizarCliente','ControllerClientes@actualizarCliente');

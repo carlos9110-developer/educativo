@@ -12,13 +12,23 @@ class DatabaseSeeder extends Seeder
             'roles',
             'users',
             'docentes',
-            'administrativos'
+            'administrativos',
+            'areas',
+            'materias',
+            'niveles_estudio',
+            'grados',
+            'grados_clei'
         ];
         $this->truncateTablas($tablas);
         $this->call(RolesSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(AdministrativosSeeder::class);
         $this->call(DocentesSeeder::class);
+        $this->call(AreasSeeder::class);
+        $this->call(MateriasSeeder::class);
+        $this->call(NivelesEstudioSeeder::class);
+        $this->call(GradosSeeder::class);
+        $this->call(GradosCleiSeeder::class);
         Model::reguard();
     }
 
