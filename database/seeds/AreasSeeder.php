@@ -8,10 +8,11 @@ class AreasSeeder extends Seeder
     {
         $areas =
         [
-            '0' => array("area"=>"Area 1"),
-            '1' => array("area"=>"Area 2"),
-            '2' => array("area"=>"Area 3"),
-            '3' => array("area"=>"Area 4")
+            '0' => array("area"=>"No Aplica"),
+            '1' => array("area"=>"Area 1"),
+            '2' => array("area"=>"Area 2"),
+            '3' => array("area"=>"Area 3"),
+            '4' => array("area"=>"Area 4")
         ];
 
         foreach( $areas as $key =>$value ){

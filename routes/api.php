@@ -16,20 +16,16 @@ Route::group(['middleware' => 'verificacionToken'], function()
     /** CONTROLADOR USERS */
     Route::get('VerificarToken','UserController@verificarToken');
 
-    Route::post('registroCliente','ControllerClientes@registrarCliente');
-    Route::get('infoCliente','ControllerClientes@informacionCliente');
-    Route::put('actualizarCliente','ControllerClientes@actualizarCliente');
-    Route::put('desactivarCuenta','ControllerCuentas@desactivarCuenta');
-    Route::put('activarCuenta','ControllerCuentas@activarCuenta');
-    Route::post('registroCuenta','ControllerCuentas@registroCuenta');
-    Route::post('consignacion','ControllerTransacciones@consignacion');
-    Route::put('editarConsignacion','ControllerTransacciones@editarConsignacion');
-    Route::post('retiro','ControllerTransacciones@retiro');
-    Route::put('editarRetiro','ControllerTransacciones@editarRetiro');
-    Route::get('traerTransaccionesCuenta','ControllerTransacciones@traerTransaccionesCuenta');
-    Route::get('traerClientes','ControllerClientes@traerClientes');
-    Route::get('traerCuentas','ControllerCuentas@traerCuentas');
-    Route::get('traerCuentasCliente','ControllerCuentas@traerCuentasCliente');
+    /** CONTROLADOR GRADOS */
+    Route::get('traer-grados','GradosController@traerGrados');
+
+    /** CONTROLADOR MATERIAS */
+    Route::get('traer-materias','MateriasController@traerMaterias');
+    Route::get('traer-info-materia','MateriasController@traerInfoMateria');
+    Route::post('registrar-editar-materia','MateriasController@registrarEditarMaterias');
+
+     /** CONTROLADOR AREAS */
+     Route::get('traer-areas','AreasController@traerAreas');
 });
  // ruta para registrar las tarjetas
 
